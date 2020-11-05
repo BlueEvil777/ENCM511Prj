@@ -42,7 +42,8 @@ void main(void) {
     IOinit();
     while(1)
     {
-        IOcheck();
+        IOcheckFlags();
+        IO_LED();
     }
     
     
