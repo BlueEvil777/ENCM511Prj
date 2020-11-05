@@ -134,15 +134,14 @@ void IO_LED(){
         ledStatus = !ledStatus;//change led state
     }
     //cases where multiple buttons are pressed
-    else if(!(btn1) && !(btn2) && (btn3)){//if 2 buttons are pressed and one of which is RA2 button
+    
+    else if((btn1 && (btn2 || btn3))||(btn2 && (btn1 || btn3))){//if 2 buttons are pressed and one of which is RA4 button
         LATBbits.LATB8 = 1;//light stays on
     }
     
-    else if((PORTAbits.RA4 == 0) && ((PORTAbits.RA2 == 0) || (PORTBbits.RB4 == 0))){//if 2 buttons are pressed and one of which is RA4 button
-        LATBbits.LATB8 = 1;//light stays on
-    }
-    
-    else if((PORTAbits.RA2) == 1 && (PORTAbits.RA4) == 1 && (PORTBbits.RB4 == 1)){//if no buttons are pressed
-        LATBbits.LATB8 = 0;//light is off
+    else
+    {
+        LATBbits.LATB8 = 0;
+        Sleep();
     }
 }
