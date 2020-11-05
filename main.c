@@ -24,7 +24,7 @@
 #pragma config FCKSM = CSECMD // Clock switching is enabled, clock monitor disabled
 
 
-// MACROS for Idle, Sleep modes
+//MACROS for Idle, Sleep modes
 #define Nop() {__asm__ volatile ("nop");}
 #define ClrWdt() {__asm__ volatile ("clrwdt");}
 #define Sleep() {__asm__ volatile ("pwrsav #0");}   //Sleep() - put MCU in sleep mode - CPU and some peripherals off
@@ -38,7 +38,6 @@ void main(void) {
      NewClk(32); // 8 for 8 MHz; 500 for 500 kHz; 32 for 32 kHz
      
    // Initialize IOs for low-power wake-up
-    AD1PCFG = 0xFFFF; // Turn all analog pins as digital
     IOinit();
     while(1)
     {
