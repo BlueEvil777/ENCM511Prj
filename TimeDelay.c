@@ -14,7 +14,7 @@ void Delay_time(uint16_t time_ms){
     T2CONbits.T32 = 1;//allows Timer2 and Timer3 to form a 32-bit timer
     T2CONbits.TSIDL = 0;//allows timer to continue while cpu is in idle mode.
     
-    IPC1bits.T2IP = 7;//sets Timer2 interrupt priority to high
+    IPC1bits.T2IP = 1;//sets Timer2 interrupt priority to high
     IEC0bits.T2IE = 1;//enables timer interrupt
     IFS0bits.T2IF = 0;//clears Timer2 interrupt flag
     
